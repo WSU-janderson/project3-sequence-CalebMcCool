@@ -27,8 +27,8 @@ Sequence::Sequence(size_t sz) :
 }
 
 //Constructor for Deep Copy
-Sequence::Sequence(const Sequence& other) :
-    sequenceLength(other.sequenceLength){
+Sequence::Sequence(const Sequence& s) :
+    sequenceLength(s.sequenceLength){
 
 }
 
@@ -52,9 +52,29 @@ void Sequence::push_back(std::string item){
             current = current->next;
         }
 
+        //Assigning last node's next field to the new node
         current->next = newNodePtr;
+        newNodePtr->prev = current;
+        //Assigning tail to the new node
+        this->sequenceTail = newNodePtr;
     }
 
+}
+
+void Sequence::pop_back(){
+    if (sequenceHead != nullptr){
+        sequenceTail = sequenceTail->prev;
+        --sequenceLength;
+
+        SequenceNode* current;
+        current = sequenceHead;
+
+        //for loop set at one because sequenceHead is already 1
+        for (int i=1; i<sequenceLength; i++){
+            current = current->next;
+        }
+        current->next = nullptr;
+    }
 }
 
 //Return first element

@@ -23,10 +23,11 @@ private:
 
 public:
     Sequence(size_t sz = 0);
-    Sequence(const Sequence& other);
+    Sequence(const Sequence& s);
 
 
     void push_back(std::string item);
+    void pop_back();
     std::string front() const;
     size_t size() const;
 

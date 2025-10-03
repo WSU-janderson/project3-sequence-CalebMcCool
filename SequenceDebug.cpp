@@ -17,9 +17,13 @@ int main() {
     cout << "Your project is ready to go!" << endl;
 
     cout << "Creating Sequence 1" << endl;
-    Sequence s1(1);
+    Sequence s1(5);
     cout << s1.size() << endl;
+    s1.push_back("hello");
+    s1.push_back("Goodbye");
+    s1.push_back("Last Element");
 
+    cout << s1.front() << endl;
 
     return 0;
 }

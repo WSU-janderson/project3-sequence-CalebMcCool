@@ -3,17 +3,34 @@
 #include <cstdlib>
 #include <string>
 
-class Sequence{
+class SequenceNode {
 private:
-    int sequenceLength;
-
 
 public:
-    Sequence();
-    Sequence(size_t length);
+    SequenceNode* prev;
+    SequenceNode* next;
+    std::string item;
+    SequenceNode();
+    SequenceNode(std::string);
+};
 
+class Sequence{
+private:
+    //Need to: add in sequenceHead and sequenceTail
+    int sequenceLength;
+    SequenceNode* sequenceHead;
+    SequenceNode* sequenceTail;
+
+public:
+    Sequence(size_t sz = 0);
+    Sequence(const Sequence& other);
+
+
+    void push_back(std::string item);
+    std::string front() const;
     size_t size() const;
+
 
 };
 
-#endif Sequence_h
+#endif

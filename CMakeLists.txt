@@ -8,6 +8,9 @@ add_executable(SequenceDebug
         SequenceDebug.cpp
         Sequence.cpp
         Sequence.h
+        sequenceNode.h
+        SequenceNode.h
+        SequenceNode.h
 )
 
 # once you have everything in Sequence implemented, you can run SequenceTestHarness
@@ -16,6 +19,9 @@ add_executable(SequenceTestHarness
         SequenceTestHarness.cpp
         Sequence.cpp
         Sequence.h
+        sequenceNode.h
+        SequenceNode.h
+        SequenceNode.h
 )
 
 # Make SequenceDebug the default startup target

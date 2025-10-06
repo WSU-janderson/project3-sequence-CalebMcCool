@@ -32,10 +32,11 @@ int main() {
     cout << "Deep Copy Created... " << s1.front() << endl;
     cout << "Sequence 1 Element 2: " << s1[2] << " Address: " << &(s1[2]) << endl;
     cout << "Sequence 2 Element 2: " << s2[2] << " Address: " << &(s2[2]) << endl;
+    cout << "--------Testing Insert-----------" << endl;
 
-
-
-
+    cout << "Before: " << endl;
+    s1.insert(2, "test");
+    cout << "After: " << endl;
 
 
     return 0;

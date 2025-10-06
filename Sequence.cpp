@@ -112,6 +112,48 @@ void Sequence::pop_back(){
     }
 }
 
+//Inserts node somewhere than pushes the nodes ahead
+void Sequence::insert(size_t position, std::string item){
+    if (position >= 0 && position <= sequenceLength){
+
+        SequenceNode* insertNode = new SequenceNode(item);
+
+        //Inserting at the head
+        if (position == 0){
+            insertNode->next = sequenceHead;
+
+            if (sequenceHead != nullptr){
+                sequenceHead->prev = insertNode;
+            }
+
+            if (sequenceLength == 0){
+                sequenceTail = insertNode;
+            }
+            sequenceHead = insertNode;
+
+        } else{
+            SequenceNode* current;
+            current = sequenceHead;
+            for(size_t i=0; i < position; i++){
+                current = current->next;
+            }
+
+            insertNode->prev = current->prev;
+            insertNode->next = current;
+            if (insertNode->prev != nullptr){
+                insertNode->prev->next = insertNode;
+            }
+            if (insertNode->next != nullptr){
+                insertNode->next->prev = insertNode;
+            }
+        }
+
+    } else {
+        //Add exception here
+    }
+    sequenceLength++;
+}
+
 //Return first element
 std::string Sequence::front() const{
     if (this->sequenceHead != nullptr){

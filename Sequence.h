@@ -28,6 +28,7 @@ public:
     std::string& operator[] (size_t position);
     void push_back(std::string item);
     void pop_back();
+    void insert(size_t position, std::string item);
     std::string front() const;
     size_t size() const;
 

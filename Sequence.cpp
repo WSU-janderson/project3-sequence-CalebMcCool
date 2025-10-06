@@ -24,11 +24,22 @@ Sequence::Sequence(size_t sz) :
     sequenceHead(nullptr),
     sequenceTail(nullptr) {
 
+    
+
 }
 
 //Constructor for Deep Copy
-Sequence::Sequence(const Sequence& s) :
-    sequenceLength(s.sequenceLength){
+Sequence::Sequence(const Sequence& s):
+    sequenceLength(s.sequenceLength),
+    sequenceHead(nullptr),
+    sequenceTail(nullptr){
+
+    SequenceNode* current;
+    current = s.sequenceHead;
+    while(current != nullptr){
+        this->push_back(current->item);
+        current = current->next;
+    }
 
 }
 
@@ -77,6 +88,8 @@ void Sequence::push_back(std::string item){
         //Assigning tail to the new node
         this->sequenceTail = newNodePtr;
     }
+
+    sequenceLength++;
 
 }
 

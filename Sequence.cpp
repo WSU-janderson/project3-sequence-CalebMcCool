@@ -32,6 +32,25 @@ Sequence::Sequence(const Sequence& s) :
 
 }
 
+std::string& Sequence::operator[] (size_t position){
+    if (position >= 0 && position <= sequenceLength){
+        SequenceNode* current;
+        current = sequenceHead;
+
+        //Offseting the goal by 1 since sequence head already 1 iteration through the list
+        for (size_t i=0; i<position; i++){
+            current = current->next;
+        }
+        return current->item;
+
+
+
+    } else {
+        //add exception
+    }
+}
+
+
 //Add node to sequence
 void Sequence::push_back(std::string item){
     SequenceNode* newNodePtr;
@@ -61,6 +80,7 @@ void Sequence::push_back(std::string item){
 
 }
 
+//Delete node at the end
 void Sequence::pop_back(){
     if (sequenceHead != nullptr){
         sequenceTail = sequenceTail->prev;

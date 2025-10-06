@@ -25,7 +25,7 @@ public:
     Sequence(size_t sz = 0);
     Sequence(const Sequence& s);
 
-
+    std::string& operator[] (size_t position);
     void push_back(std::string item);
     void pop_back();
     std::string front() const;

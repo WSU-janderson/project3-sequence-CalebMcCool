@@ -14,6 +14,8 @@
 using namespace std;
 
 int main() {
+    std::string someString = "";
+
     cout << "Your project is ready to go!" << endl;
 
     cout << "Creating Sequence 1" << endl;
@@ -21,11 +23,14 @@ int main() {
     cout << s1.size() << endl;
     s1.push_back("hello");
     s1.push_back("Goodbye");
+    s1.push_back("Some Element");
+    s1.push_back("Again Element");
     s1.push_back("Last Element");
 
     cout << s1.front() << endl;
 
-    s1.pop_back();
+    someString = s1[1];
+    cout << someString;
 
     return 0;
 }

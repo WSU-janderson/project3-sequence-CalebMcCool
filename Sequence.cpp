@@ -20,17 +20,19 @@ SequenceNode::SequenceNode(std::string item) :
 
 //Constructor for Sequence
 Sequence::Sequence(size_t sz) :
-    sequenceLength(sz),
+    sequenceLength(0),
     sequenceHead(nullptr),
     sequenceTail(nullptr) {
 
-    
+    for (size_t i=0; i<sz; i++){
+        this->push_back("");
+    }
 
 }
 
 //Constructor for Deep Copy
 Sequence::Sequence(const Sequence& s):
-    sequenceLength(s.sequenceLength),
+    sequenceLength(0),
     sequenceHead(nullptr),
     sequenceTail(nullptr){
 

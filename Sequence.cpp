@@ -1,6 +1,8 @@
 #include "Sequence.h"
 #include <cstdlib>
 #include <string>
+#include <exception>
+#include <iostream>
 
 SequenceNode::SequenceNode() :
     prev(nullptr),
@@ -45,6 +47,11 @@ Sequence::Sequence(const Sequence& s):
 
 }
 
+//Deconsructor
+Sequence::~Sequence(){
+    clear();
+}
+
 std::string& Sequence::operator[] (size_t position){
     if (position >= 0 && position <= sequenceLength){
         SequenceNode* current;
@@ -59,7 +66,7 @@ std::string& Sequence::operator[] (size_t position){
 
 
     } else {
-        //add exception
+        throw std::exception();
     }
 }
 
@@ -149,7 +156,7 @@ void Sequence::insert(size_t position, std::string item){
         }
 
     } else {
-        //Add exception here
+        throw std::exception();
     }
     sequenceLength++;
 }
@@ -157,12 +164,57 @@ void Sequence::insert(size_t position, std::string item){
 //Return first element
 std::string Sequence::front() const{
     if (this->sequenceHead != nullptr){
-        SequenceNode* firstElement;
+        //SequenceNode* firstElement;
         return this->sequenceHead->item;
+    }
+}
+
+//Return Last element
+std::string Sequence::back() const{
+    SequenceNode* current = sequenceHead;
+    while (current->next != nullptr){
+        current = current->next;
+    }
+    return current->item;
+}
+
+//Returns boolean of if empty
+bool Sequence::empty() const{
+    if (sequenceHead != nullptr){
+        return false;
+    } else{
+        return true;
     }
 }
 
 //Size of Sequence
 size_t Sequence::size() const {
     return sequenceLength;
+}
+
+//Clear the Sequence
+void Sequence::clear(){
+    SequenceNode* current = sequenceHead;
+    while (current != nullptr){
+        SequenceNode* nextNode = current->next;
+        delete current;
+        current = nextNode;
+    }
+    sequenceHead = nullptr;
+    sequenceTail = nullptr;
+    sequenceLength = 0;
+}
+
+std::ostream& operator<<(std::ostream& os, const Sequence& s){
+    os << "<";
+    SequenceNode* current = s.sequenceHead;
+    while (current != nullptr){
+        os << current->item;
+        if (current->next != nullptr){
+            os << ", ";
+        }
+        current = current->next;
+    }
+    os << ">";
+    return os;
 }

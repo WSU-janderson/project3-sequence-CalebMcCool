@@ -2,6 +2,8 @@
 #define Sequence_h
 #include <cstdlib>
 #include <string>
+#include <exception>
+#include <iostream>
 
 class SequenceNode {
 private:
@@ -24,14 +26,19 @@ private:
 public:
     Sequence(size_t sz = 0);
     Sequence(const Sequence& s);
+    ~Sequence();
 
     std::string& operator[] (size_t position);
     void push_back(std::string item);
     void pop_back();
     void insert(size_t position, std::string item);
     std::string front() const;
+    std::string back() const;
+    bool empty() const;
+    void clear();
     size_t size() const;
 
+    friend std::ostream& operator<<(std::ostream& os, const Sequence& s);
 
 };
 

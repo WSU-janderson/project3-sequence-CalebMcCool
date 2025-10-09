@@ -36,6 +36,7 @@ public:
     std::string back() const;
     bool empty() const;
     void clear();
+    void erase (size_t position);
     size_t size() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Sequence& s);

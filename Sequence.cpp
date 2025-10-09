@@ -205,6 +205,38 @@ void Sequence::clear(){
     sequenceLength = 0;
 }
 
+void Sequence::erase(size_t position){
+    //casting sequenceLength to size_t
+    size_t sizeTSequenceLength = 0;
+    for (int i=0; i< sequenceLength; i++){
+        sizeTSequenceLength++;
+    }
+    //Throwing exception if position > sequence Length
+    if (position >= sizeTSequenceLength){
+        throw std::exception();
+    }
+    //Walking down Sequence
+    SequenceNode* current = sequenceHead;
+    for (size_t i=0; i<position; i++){
+        current = current->next;
+    }
+    //Configuring prev node
+    if (current->prev != nullptr) {
+        current->prev->next = current->next;
+    } else {
+        sequenceHead = current->next;
+    }
+    //Configuring next node
+    if (current->next != nullptr){
+        current->next->prev = current->prev;
+    } else {
+        sequenceTail = current->prev;
+    }
+
+    delete current;
+    --sequenceLength;
+}
+
 std::ostream& operator<<(std::ostream& os, const Sequence& s){
     os << "<";
     SequenceNode* current = s.sequenceHead;

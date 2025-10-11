@@ -112,7 +112,7 @@ void Sequence::pop_back(){
         current = sequenceHead;
 
         //for loop set at one because sequenceHead is already 1
-        for (int i=1; i<sequenceLength; i++){
+        for (size_t i=1; i<sequenceLength; i++){
             current = current->next;
         }
         current->next = nullptr;
@@ -205,14 +205,10 @@ void Sequence::clear(){
     sequenceLength = 0;
 }
 
+//Erase one Node
 void Sequence::erase(size_t position){
-    //casting sequenceLength to size_t
-    size_t sizeTSequenceLength = 0;
-    for (int i=0; i< sequenceLength; i++){
-        sizeTSequenceLength++;
-    }
     //Throwing exception if position > sequence Length
-    if (position >= sizeTSequenceLength){
+    if (position >= sequenceLength){
         throw std::exception();
     }
     //Walking down Sequence

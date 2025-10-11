@@ -18,8 +18,7 @@ public:
 
 class Sequence{
 private:
-    //Need to: add in sequenceHead and sequenceTail
-    int sequenceLength;
+    size_t sequenceLength;
     SequenceNode* sequenceHead;
     SequenceNode* sequenceTail;
 

@@ -52,6 +52,20 @@ Sequence::~Sequence(){
     clear();
 }
 
+//Operator '=' Overload
+Sequence& Sequence::operator=(const Sequence& s) {
+    if (this == &s) {
+        return *this;
+    }
+    clear();
+    SequenceNode *current = s.sequenceHead;
+    while (current != nullptr) {
+        push_back(current->item);
+        current = current->next;
+    }
+    return *this;
+}
+
 std::string& Sequence::operator[] (size_t position){
     if (position >= 0 && position <= sequenceLength){
         SequenceNode* current;

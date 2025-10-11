@@ -26,6 +26,7 @@ public:
     Sequence(size_t sz = 0);
     Sequence(const Sequence& s);
     ~Sequence();
+    Sequence& operator=(const Sequence& s);
 
     std::string& operator[] (size_t position);
     void push_back(std::string item);
@@ -34,10 +35,10 @@ public:
     std::string front() const;
     std::string back() const;
     bool empty() const;
+    size_t size() const;
     void clear();
     void erase(size_t position);
     void erase(size_t position, size_t count);
-    size_t size() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Sequence& s);
 

@@ -44,8 +44,8 @@ int main() {
     s2.push_back("test item right here");
     cout << s2 << endl;
     cout << s1 << endl;
-    cout << "removing element 2" << endl;
-    s1.erase(2);
+    cout << "removing element 1-2" << endl;
+    s1.erase(1, 2);
     cout << s1 << endl;
 
 

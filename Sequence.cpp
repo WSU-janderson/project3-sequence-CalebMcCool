@@ -106,7 +106,7 @@ void Sequence::push_back(std::string item){
 void Sequence::pop_back(){
     if (sequenceHead != nullptr){
         sequenceTail = sequenceTail->prev;
-        --sequenceLength;
+        sequenceLength--;
 
         SequenceNode* current;
         current = sequenceHead;
@@ -230,7 +230,23 @@ void Sequence::erase(size_t position){
     }
 
     delete current;
-    --sequenceLength;
+    sequenceLength--;
+}
+
+//Erase a line of nodes
+void Sequence::erase(size_t position, size_t count){
+    if (count == 0){
+        return;
+    }
+    if (position >= sequenceLength){
+        throw std::exception();
+    }
+    if ((position + count) > sequenceLength){
+        throw std::exception();
+    }
+    for (size_t i=0; i<count; i++){
+        erase(position);
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Sequence& s){

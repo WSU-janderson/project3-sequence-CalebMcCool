@@ -2,9 +2,9 @@
  * SequenceDebug.cpp
  * Project 3
  * CS 3100
+ * Caleb McCool
  *
- * In this file, you will write your tests as you implement Sequence. If you are using CLion, you need to select
- * SequenceDebug from the drop-down menu next to the Build (hammer icon) if it is on SequenceTestHarness
+ * This is the debugging file used to test Sequence
  */
 
 #include "Sequence.h"
@@ -32,24 +32,11 @@ int main() {
     Sequence s2(0);
     s2.push_back("Pasta 0");
     s2.push_back("Yam 1");
-    s2.push_back("Yak 2");
+    s2.push_back("Chicken 2");
     s2.push_back("Orange 3");
     s2.push_back("Lemon Last");
     cout << s2 << endl;
 
-    cout << "Creating Sequence 3..." << endl;
-    Sequence s3(0);
-    cout << "Coping Sequence 1 to Sequence 3..." << endl;
-    s3 = s1;
 
-    cout << "Sequence 3:" << endl;
-    cout << s3 << endl;
-
-    s3 = s2;
-
-    cout << "Sequence 3:" << endl;
-    cout << s3 << endl;
-    s3.insert(1, "yammington");
-    cout << s3 << endl;
     return 0;
 }

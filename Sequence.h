@@ -1,3 +1,9 @@
+//-------------------------------------------
+// Sequence.h is the header file to define variables and functions within Sequence.cpp
+// Created by: Caleb McCool
+// Date: October 13, 2025
+//-------------------------------------------
+
 #ifndef Sequence_h
 #define Sequence_h
 #include <cstdlib>

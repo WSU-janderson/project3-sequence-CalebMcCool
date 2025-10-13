@@ -1,26 +1,41 @@
+//-------------------------------------------
+// Created By: Caleb McCool
+// Date: October 13, 2025
+//
+// SequenceNode:
+//   This is a single element of a sequence. It holds the data:
+//    prev: pointer to the previous node
+//    next: pointer to the next node
+//    item: a string
+// Sequence:
+//  This is a collection of SequenceNodes in consecutive order.
+//  It contains the data:
+//    sequenceHead: a pointer to the head of the sequence
+//    sequenceTail: a pointer to the tail of the sequence
+//-------------------------------------------
 #include "Sequence.h"
 #include <cstdlib>
 #include <string>
 #include <exception>
 #include <iostream>
 
+
+// Constructor for a SequenceNode without Data
 SequenceNode::SequenceNode() :
     prev(nullptr),
     next(nullptr)
 {
-
 }
 
+// Constructor for a SequenceNode with Data
 SequenceNode::SequenceNode(std::string item) :
     prev(nullptr),
     next(nullptr),
     item(item)
     {
-
 }
 
-
-//Constructor for Sequence
+// Constructor for a Sequence with Size
 Sequence::Sequence(size_t sz) :
     sequenceLength(0),
     sequenceHead(nullptr),
@@ -32,7 +47,7 @@ Sequence::Sequence(size_t sz) :
 
 }
 
-//Constructor for Deep Copy
+// Constructor for a deep copy of Sequence
 Sequence::Sequence(const Sequence& s):
     sequenceLength(0),
     sequenceHead(nullptr),
@@ -47,12 +62,12 @@ Sequence::Sequence(const Sequence& s):
 
 }
 
-//Deconsructor
+//Deconsructor for Sequence
 Sequence::~Sequence(){
     clear();
 }
 
-//Operator '=' Overload
+//Operator '=' Overload for Sequence
 Sequence& Sequence::operator=(const Sequence& s) {
     if (this == &s) {
         return *this;
@@ -66,6 +81,7 @@ Sequence& Sequence::operator=(const Sequence& s) {
     return *this;
 }
 
+//Operator '[]' overload for Sequence
 std::string& Sequence::operator[] (size_t position){
     if (position >= 0 && position <= sequenceLength){
         SequenceNode* current;
@@ -77,15 +93,12 @@ std::string& Sequence::operator[] (size_t position){
         }
         return current->item;
 
-
-
     } else {
         throw std::exception();
     }
 }
 
-
-//Add node to sequence
+//push_back for Sequence adds a node to the end of the Sequence
 void Sequence::push_back(std::string item){
     SequenceNode* newNodePtr;
     newNodePtr = new SequenceNode;
@@ -116,7 +129,7 @@ void Sequence::push_back(std::string item){
 
 }
 
-//Delete node at the end
+//pop_back for Sequence deletes node at the end of the Sequence
 void Sequence::pop_back(){
     if (sequenceHead != nullptr){
         sequenceTail = sequenceTail->prev;
@@ -133,7 +146,7 @@ void Sequence::pop_back(){
     }
 }
 
-//Inserts node somewhere than pushes the nodes ahead
+//insert for Sequence inserts node somewhere than pushes the nodes ahead
 void Sequence::insert(size_t position, std::string item){
     if (position >= 0 && position <= sequenceLength){
 
@@ -263,6 +276,8 @@ void Sequence::erase(size_t position, size_t count){
     }
 }
 
+//Overloads the << operator to print out custom message outputting
+// sequence elements.
 std::ostream& operator<<(std::ostream& os, const Sequence& s){
     os << "<";
     SequenceNode* current = s.sequenceHead;
